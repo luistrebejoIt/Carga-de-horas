@@ -1,0 +1,20 @@
+package com.psa.cargahoras.service;
+
+import com.psa.cargahoras.dtos.ProyectoDTO; // 🆕 Importar DTO
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+@Service
+public class ProyectosService {
+
+    private final RestTemplate restTemplate = new RestTemplate();
+    private final String urlProyectos =
+            "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/" +
+                    "32c8fe38-22a6-4fbb-b461-170dfac937e4/proyectos-api/1.0.0/m/proyectos";
+
+    public ProyectoDTO[] obtenerProyectos() { // 🆕 Devolver array de DTO
+        ResponseEntity<ProyectoDTO[]> response = restTemplate.getForEntity(urlProyectos, ProyectoDTO[].class); // 🆕 Usar DTO
+        return response.getBody();
+    }
+}
