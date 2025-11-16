@@ -21,4 +21,9 @@ public class TareasController {
     public List<TareaDTO> listar(@RequestParam String proyecto) {
         return service.obtenerTareasPorProyecto(proyecto);
     }
+
+    @GetMapping("/recurso/{recursoId}/proyecto/{proyectoId}")
+    public TareaDTO[] obtenerTareasPorRecursoYProyecto(@PathVariable String recursoId, @PathVariable String proyectoId) {
+        return service.obtenerTareasPorRecursoYProyecto(recursoId, proyectoId);
+    }
 }

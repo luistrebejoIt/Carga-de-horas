@@ -1,8 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import {selectOptions} from "@testing-library/user-event/dist/select-options";
 
-export default function LabelFecha() {
+export default function LabelFecha({camposCargados = false, onSelectFecha}) {
     const hoy = new Date();
     const [fechaSeleccionada, setFechaSeleccionada] = useState(hoy.toISOString().split('T')[0]);
+
+    useEffect(() => {
+        if (!camposCargados) {
+            setFechaSeleccionada(hoy.toISOString().split('T')[0]);
+        }
+    }, [camposCargados]);
+
+    useEffect(() => {
+        if (onSelectFecha){
+            onSelectFecha(fechaSeleccionada);
+        }
+    }, [fechaSeleccionada])
 
     function getDiaLunes() {
         let lunes = hoy.getDate() - hoy.getDay() + 1;
@@ -21,6 +34,7 @@ export default function LabelFecha() {
             <label>Fecha</label>
             <input
                 type="date"
+                disabled={!camposCargados}
                 value={fechaSeleccionada}
                 min={getDiaLunes()}
                 max={getDiaDomingo()}

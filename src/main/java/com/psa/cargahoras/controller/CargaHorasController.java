@@ -19,6 +19,7 @@ public class CargaHorasController {
 
     @PostMapping
     public CargaHoras cargarHoras(@RequestBody CargaHoras horas) {
+        System.out.println("CargaHoras cargarHoras" + horas);
         return service.guardarHoras(horas);
     }
 

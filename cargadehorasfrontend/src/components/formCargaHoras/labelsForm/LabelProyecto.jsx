@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
 
-export default function LabelProyecto(recursoId = '', { onSelectProyect }) {
+export default function LabelProyecto({recursoId = '', onSelectProyect}) {
     const [proyectos, setProyectos] = useState([]);
 
     useEffect(() => {
@@ -9,7 +9,7 @@ export default function LabelProyecto(recursoId = '', { onSelectProyect }) {
     }, []);
 
     function getProyectos(){
-        axios.get('http://localhost:8080/api/recurso/' + recursoId + '/proyectos')
+        axios.get('http://localhost:8080/api/proyectos/recurso/' + recursoId)
             .then(res => setProyectos(res.data))
             .catch(err => console.error('Error getProyectosPorRecurso:', err));
     }

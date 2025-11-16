@@ -19,7 +19,7 @@ public class CargaHorasService {
     }
 
     public List<CargaHoras> obtenerPorRecurso(String idRecurso) {
-        return repository.findByIdRecurso(idRecurso);
+        return repository.findByRecursoId(idRecurso);
     }
 }
 

@@ -16,13 +16,13 @@ public class CargaHoras {
 
 
     @Column(name = "id_recurso")
-    private String idRecurso;
+    private String recursoId;
 
     @Column(name = "id_proyecto")
-    private String idProyecto;
+    private String proyectoId;
 
     @Column(name = "id_tarea")
-    private String idTarea;
+    private String tareaId;
 
     @Column(name = "fecha")
     private LocalDate fecha;

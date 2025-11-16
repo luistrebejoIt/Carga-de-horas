@@ -9,8 +9,6 @@ import lombok.Data;
 public class TareaDTO {
     private String id;
     private String nombre;
-
-    // El JSON de ejemplo usa ambos, "proyectoId" y "proyectold"
     private String proyectoId;
-    private String proyectold;
+    private String recursoId;
 }
