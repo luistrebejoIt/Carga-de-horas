@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import LabelFecha from "./labelsForm/LabelFecha";
 
 function CargaHoras() {
     const [recursos, setRecursos] = useState([]); // 🆕 Estado para guardar los recursos
@@ -114,13 +115,7 @@ function CargaHoras() {
                     ))}
                 </select>
 
-                <label>Fecha:</label>
-                <input
-                    type="date"
-                    value={form.fecha}
-                    onChange={(e) => setForm({ ...form, fecha: e.target.value })}
-                    required
-                />
+                <LabelFecha onSetDate={(fecha) => setForm({ ...form, fecha })}/>
 
                 <label>Horas:</label>
                 <input
